@@ -1,11 +1,11 @@
 # TODO
 
-- expense list [x]
-- adding expenses [x]
-- expense counting [x]
-- analytics [x]
-- changelog page [x]
-- dark mode [x]
+- expense list &#9744;
+- adding expenses &#9744;
+- expense counting &#9744;
+- analytics &#9744;
+- changelog page &#9745; (base version implemented)
+- dark mode &#9744;
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
