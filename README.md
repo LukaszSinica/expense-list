@@ -1,6 +1,6 @@
 # TODO
 
-- expense list &#9744;
+- expense list &#9745;
 - adding expenses &#9744;
 - expense counting &#9744;
 - analytics &#9744;
