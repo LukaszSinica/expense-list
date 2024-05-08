@@ -8,8 +8,8 @@ export default function Changelog() {
         <div className='text-sm font-extralight'>{changelog.date}</div>
         {changelog.change.map((description, key) => <li key={key} className="list-disc" >{description}</li>)}
     </div>
-  )
+  ).reverse()
   return (
-    <main className="flex-grow">{changelogs}</main>
+    <main className="flex-grow shadow-gray shadow-md">{changelogs}</main>
   )
 }
