@@ -1,9 +1,26 @@
+"use client"
 import { expenseListDataTest } from '@/app/lib/expenseListDataTest'
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+interface Expense {
+  type: string;
+  amount: number;
+  entry: string;
+}
 export default function ExpenseList() {
+  const [expenses, setExpenses] = useState<Expense[]>([]);
 
-  const expenseListData = expenseListDataTest.map((expense, key) => 
+  useEffect(() => {
+    let storedExpenses: Expense[] = [];
+    try {
+      storedExpenses = JSON.parse(localStorage.getItem('expenses') ?? '[]');
+    } catch (error) {
+      console.error("Error parsing 'expenses':", error);
+    }
+  
+    setExpenses(storedExpenses);
+  }, []);
+
+  const expenseListData = expenses.map((expense, key) => 
     <div key={key} className="flex justify-between shadow-gray shadow-md px-12 py-4 hover:bg-gray-200">
       <div className="flex grow-1">
         <div className="self-center">icon</div>
@@ -16,7 +33,7 @@ export default function ExpenseList() {
           </div>
         </div>
       </div>
-      <div className="self-center text-red-400 font-semibold">$ -{expense.value}</div>
+      <div className="self-center text-red-400 font-semibold">$ -{expense.amount}</div>
     </div>
   )
 
