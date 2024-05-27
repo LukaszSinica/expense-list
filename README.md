@@ -6,7 +6,7 @@
 - analytics &#9744;
 - changelog page &#9745; (base version implemented)
 - dark mode &#9744;
-- changing structure of data +&#9744;
+- changing structure of data &#9744;
 - refreshing data after clearing (probably adding context) &#9744;
 
 
