@@ -1,5 +1,5 @@
 "use client"
-import { expenseListDataTest } from '@/app/lib/expenseListDataTest'
+import { expenseListDataTest, getTestData } from '@/app/lib/expenseListDataTest'
 import React, { useEffect, useState } from 'react'
 interface Expense {
   type: string;
@@ -8,7 +8,6 @@ interface Expense {
 }
 export default function ExpenseList() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
-
   useEffect(() => {
     let storedExpenses: Expense[] = [];
     try {
@@ -38,6 +37,6 @@ export default function ExpenseList() {
   )
 
   return (
-    <main className="flex-grow shadow-gray shadow-md">{expenseListData}</main>
+    <main className="flex-grow shadow-gray shadow-md">{getTestData()}</main>
   )
 }

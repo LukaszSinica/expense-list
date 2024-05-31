@@ -11,11 +11,13 @@ export default function AddExpense() {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const formJson = Object.fromEntries(formData.entries());
+
     try {
       const expenses = JSON.parse(localStorage.getItem('expenses') ?? '[]');
       expenses.push({...formJson, entry: 1});
       localStorage.setItem('expenses', JSON.stringify(expenses));
     }  catch (error) {}
+    
   }
 
   return (
