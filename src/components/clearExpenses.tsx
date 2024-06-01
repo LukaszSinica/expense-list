@@ -1,16 +1,12 @@
 "use client"
-import { useRouter } from 'next/navigation';
+import { useExpense } from '@/app/expenseProvider';
 import React from 'react'
 
 export default function ClearExpenses() {
-    const router = useRouter();
+  const { clearExpense } = useExpense();
 
-  function clearExpenses() {
-    localStorage.removeItem('expenses');
-    router.refresh();
-  }
 
   return (
-    <button onClick={() => clearExpenses()}>clear</button>
+    <button onClick={() => clearExpense()}>clear</button>
   )
 }
