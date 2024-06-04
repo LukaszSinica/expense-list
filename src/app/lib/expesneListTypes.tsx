@@ -3,11 +3,18 @@ export const expenseListTypes = [
     "Groceries",
     "Food",
 ]
+export interface Expense {
+    amount: number;
+}
+export interface ExpenseItems {
+    [item: string]: Expense;
+}
 
 export interface ExpenseDetails {
-    amount: number;
     entries: number;
-    icon: string | React.ReactElement
+    amount: number;
+    icon: string | React.ReactElement;
+    expenseItems: ExpenseItems;
 }
 
 export interface ExpenseCategory {

@@ -29,6 +29,13 @@ export const expenseReducer = (state: any, action: any) => {
                 newState[date][category] = { amount: 0, entries: 0, icon: icon };
             }
 
+            if (!newState[date][category].expenseItems) {
+                newState[date][category].expenseItems = {};
+            }
+        
+            const entryIndex =  newState[date][category].entries;
+            newState[date][category].expenseItems[entryIndex] = { amount: amount };
+
             newState[date][category].amount += amount;
             newState[date][category].entries += 1;
 
