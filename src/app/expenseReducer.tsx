@@ -44,15 +44,20 @@ export const expenseReducer = (state: any, action: any) => {
             return newState;
         }
         case "REMOVE_FROM_EXPENSE": {
-            const { date, category, amount } = action.item;
+            const { date, category, amount, expense } = action.item;
             const newState = { ...state };
 
             if (newState[date] && newState[date][category]) {
                 newState[date][category].amount -= amount;
                 newState[date][category].entries -= 1;
-
+                delete newState[date][category].expenseItems[expense];
                 if (newState[date][category].amount <= 0) {
                     delete newState[date][category];
+                } else if(newState[date][category].expenseItems.length == 0) {
+                    delete newState[date][category];
+                }
+                if(Object.keys(newState[date]).length == 0) {
+                    delete newState[date];
                 }
             }
             localStorage.setItem('expenses', JSON.stringify(newState));
