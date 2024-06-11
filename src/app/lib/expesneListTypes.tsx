@@ -13,7 +13,6 @@ export interface ExpenseItems {
 export interface ExpenseDetails {
     entries: number;
     amount: number;
-    icon: string | React.ReactElement;
     expenseItems: ExpenseItems;
 }
 

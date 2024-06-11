@@ -10,8 +10,7 @@ export default function ExpenseListItem({expenseListData, category, date}: {expe
     <React.Fragment>
         <div id={category} className="flex justify-between shadow-gray shadow-md px-12 py-4 hover:bg-gray-200 w-full" onClick={() => setShowDetails(!showDetails)}>
             <div className="flex grow-1">
-                <div className="self-center">{expenseListData[category].icon}</div>
-                <div className="px-8">
+                <div>
                     <div className="font-medium">
                         {category}
                     </div>

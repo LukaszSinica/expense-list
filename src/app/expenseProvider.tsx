@@ -7,7 +7,6 @@ interface ExpenseState {
   date: string;
   category: string;
   amount: number;
-  icon: string;
 }
 
 interface ExpenseContextType {

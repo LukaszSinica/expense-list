@@ -18,7 +18,7 @@ export const initializer = (initialValue = initialState) => {
 export const expenseReducer = (state: any, action: any) => {
     switch (action.type) {
         case "ADD_TO_EXPENSE": {
-            const { date, category, amount, icon } = action.item;
+            const { date, category, amount } = action.item;
             const newState = { ...state };
 
             if (!newState[date]) {
@@ -26,7 +26,7 @@ export const expenseReducer = (state: any, action: any) => {
             }
 
             if (!newState[date][category]) {
-                newState[date][category] = { amount: 0, entries: 0, icon: icon };
+                newState[date][category] = { amount: 0, entries: 0 };
             }
 
             if (!newState[date][category].expenseItems) {

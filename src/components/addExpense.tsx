@@ -1,6 +1,5 @@
 "use client"
 import { useExpense } from '@/app/expenseProvider';
-import { expenseListTypes } from '@/app/lib/expesneListTypes'
 import React, { FormEvent } from 'react'
 
 const getTodayDate = () => {
@@ -10,10 +9,7 @@ const getTodayDate = () => {
 
 export default function AddExpense() {
   const { addToExpense } = useExpense();
-
-  const optionTypes = expenseListTypes.map((type, key) => 
-    <option key={key} value={type}>{type}</option>
-  )
+  const [message, setMessage] = React.useState('')
   
  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,27 +19,32 @@ export default function AddExpense() {
     const date = getTodayDate();
     const category = data.type as string;
     const amount = parseFloat(data.amount as string);
-    const icon = `${category}_icon`;
 
-    const item = { date, category, amount, icon };
+    const item = { date, category, amount };
     addToExpense(item);
+    setMessage('expense Added')
 }
 
   return (
-    <div className="flex-grow shadow-gray shadow-md justify-center pt-4">
+    <div className="flex-grow shadow-gray shadow-md justify-center p-4">
       <form onSubmit={onSubmit}>
-      <div>
-        Type: 
-        <select name="type" defaultValue="Gas">
-          {optionTypes}
-        </select>
-      </div>
-      <div>
-        Amount:
-        <input type="number" id="amount" name="amount"/>
-      </div>
-      <button type="submit">Submit</button>
-      </form>
+          <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="type">
+            Type
+          </label>
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="type" name="type" type="text" placeholder="type"/>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">
+              Amount
+            </label>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="amount" name='amount' type="number" placeholder="10"/>
+          </div>
+          <button className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline shadow-md" type="submit">
+            Add Expense
+          </button>
+        </form>
+        {message ?<span>{message}</span> : null}
     </div>
   )
 }
