@@ -13,7 +13,8 @@ interface ExpenseContextType {
   expenses: ExpenseState[];
   addToExpense: (item: any) => void;
   removeFromExpense: (item: any) => void;
-  clearExpense: () => void;
+  removeExpense: (item: any) => void
+  clearALLExpense: () => void;
   getExpenseList: () => ExpenseDate;
 }
 
@@ -28,10 +29,11 @@ export default function ExpenseProvider({
 
   const addToExpense = (item: any) => dispatch({ type: "ADD_TO_EXPENSE", item });
   const removeFromExpense = (item: any) => dispatch({ type: "REMOVE_FROM_EXPENSE", item });
-  const clearExpense = () => dispatch({ type: "CLEAR_EXPENSE" });
+  const removeExpense = (item: any) => dispatch({ type: "REMOVE_EXPENSE", item });
+  const clearALLExpense = () => dispatch({ type: "clearALLExpense" });
   const getExpenseList = () => expenses;
 
-  const value = { expenses, addToExpense, removeFromExpense, clearExpense, getExpenseList };
+  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList };
 
   React.useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses))

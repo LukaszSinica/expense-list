@@ -64,7 +64,22 @@ export const expenseReducer = (state: any, action: any) => {
 
             return newState;
         }
-        case "CLEAR_EXPENSE": {
+        case "REMOVE_EXPENSE": {
+            const { date, category } = action.item;
+            const newState = { ...state };
+
+            if (newState[date] && newState[date][category]) {
+                delete newState[date][category]
+                if (Object.keys(newState[date]).length == 0) {
+                    delete newState[date];
+                }
+            }
+            localStorage.setItem('expenses', JSON.stringify(newState));
+
+            return newState;
+        }
+
+        case "CLEAR_All_EXPENSE": {
             localStorage.removeItem('expenses');
             return initialState;
         }
@@ -86,8 +101,12 @@ export const removeFromExpense = (item: any) => ({
     item
 });
 
-export const clearExpense = () => ({
-    type: "CLEAR_EXPENSE"
+export const removeExpense = () => ({
+    type: "REMOVE_EXPENSE"
+});
+
+export const clearALLExpense = () => ({
+    type: "CLEAR_ALL_EXPENSE"
 });
 
 export const getExpenseList = () => ({

@@ -3,9 +3,9 @@ import { useExpense } from '@/app/expenseProvider';
 import React from 'react'
 
 export default function ClearExpenses() {
-  const { clearExpense } = useExpense();
+  const { clearALLExpense } = useExpense();
 
   return (
-    <button onClick={() => clearExpense()}>clear</button>
+    <button onClick={() => clearALLExpense()}>Clear</button>
   )
 }
