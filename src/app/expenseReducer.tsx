@@ -79,12 +79,18 @@ export const expenseReducer = (state: any, action: any) => {
             return newState;
         }
 
-        case "CLEAR_All_EXPENSE": {
+        case "CLEAR_ALL_EXPENSE": {
             localStorage.removeItem('expenses');
             return initialState;
         }
         case "GET_EXPENSE_LIST": {
             return state;
+        }
+        case "GET_EXPENSE_LIST_BY_DATE": {
+            const { date } = action.item;
+            const newState = { ...state };
+
+            return newState[date];
         }
         default:
             return state;
@@ -111,4 +117,8 @@ export const clearALLExpense = () => ({
 
 export const getExpenseList = () => ({
     type: "GET_EXPENSE_LIST"
+});
+
+export const getExpenseListByDate = () => ({
+    type: "GET_EXPENSE_LIST_BY_DATE"
 });

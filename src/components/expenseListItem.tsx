@@ -4,8 +4,6 @@ import React from 'react';
 import ExpenseListItemDetails from './expenseListItemDetails';
 import { useExpense } from '@/app/expenseProvider';
 
-
-
 export default function ExpenseListItem({expenseListData, category, date}: {expenseListData: ExpenseCategory, category: string, date: string}) {
   const [showDetails, setShowDetails] = React.useState(false);
   const { removeExpense } = useExpense();
@@ -36,7 +34,7 @@ export default function ExpenseListItem({expenseListData, category, date}: {expe
         {showDetails ? 
             <>
                 {Object.keys(expenseListData[category].expenseItems).map((expense) => (
-                    <ExpenseListItemDetails key={`${category}-${expense}`} expenseListData={expenseListData} expense={expense} category={category} date={date}/>
+                    <ExpenseListItemDetails key={`${category}-${expense}`} expenseListData={expenseListData[category]} expense={expense} category={category} date={date}/>
                 ))}
             </>
         : null}

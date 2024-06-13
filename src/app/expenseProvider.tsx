@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext } from 'react'
 import { expenseReducer, initializer } from './expenseReducer'
-import { ExpenseDate } from './lib/expesneListTypes';
+import { ExpenseCategory, ExpenseDate } from './lib/expesneListTypes';
 
 interface ExpenseState {
   date: string;
@@ -16,6 +16,7 @@ interface ExpenseContextType {
   removeExpense: (item: any) => void
   clearALLExpense: () => void;
   getExpenseList: () => ExpenseDate;
+  getExpenseListByDate: (item: any) => ExpenseCategory;
 }
 
 export const ExpenseContext = React.createContext<ExpenseContextType | undefined>(undefined);
@@ -30,10 +31,12 @@ export default function ExpenseProvider({
   const addToExpense = (item: any) => dispatch({ type: "ADD_TO_EXPENSE", item });
   const removeFromExpense = (item: any) => dispatch({ type: "REMOVE_FROM_EXPENSE", item });
   const removeExpense = (item: any) => dispatch({ type: "REMOVE_EXPENSE", item });
-  const clearALLExpense = () => dispatch({ type: "clearALLExpense" });
+  const clearALLExpense = () => dispatch({ type: "CLEAR_ALL_EXPENSE" });
   const getExpenseList = () => expenses;
 
-  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList };
+  const getExpenseListByDate = (date: string) => expenses[date] as ExpenseCategory;
+
+  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList, getExpenseListByDate };
 
   React.useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses))
