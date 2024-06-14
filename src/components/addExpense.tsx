@@ -1,25 +1,27 @@
 "use client"
 import { useExpense } from '@/app/expenseProvider';
+import { getTodayDate } from '@/helper/getTodayDate';
 import React, { FormEvent } from 'react'
 
 
 export default function AddExpense() {
   const { addToExpense } = useExpense();
   const [message, setMessage] = React.useState('')
-  
- async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+  const todaysDate = getTodayDate();
 
-    const date = data.date as string;
-    const category = data.type as string;
-    const amount = parseFloat(data.amount as string);
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const data = Object.fromEntries(formData.entries());
 
-    const item = { date, category, amount };
-    addToExpense(item);
-    setMessage('expense Added')
-}
+      const date = data.date as string;
+      const category = data.type as string;
+      const amount = parseFloat(data.amount as string);
+
+      const item = { date, category, amount };
+      addToExpense(item);
+      setMessage('expense Added')
+  }
 
   return (
     <div className="flex-grow shadow-gray shadow-md justify-center p-4">
@@ -33,7 +35,13 @@ export default function AddExpense() {
               <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
             </svg>
           </div>
-          <input type="date" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="date" name="date" placeholder="Select date"/>
+          <input type="date" 
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                id="date" 
+                name="date" 
+                placeholder="Select date"
+                defaultValue={todaysDate}
+                />
         </div>
           <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="type">

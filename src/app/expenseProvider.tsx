@@ -17,8 +17,18 @@ interface ExpenseContextType {
   clearALLExpense: () => void;
   getExpenseList: () => ExpenseDate;
   getExpenseListByDate: (item: any) => ExpenseCategory;
+  getAnalyticsData: () => AnalyticsDataType;
 }
 
+interface DailyData {
+  dayAmount: number;
+  mostSpentOn: number;
+  mostSpentCategory: string;
+}
+
+export interface AnalyticsDataType {
+  [date: string]: DailyData;
+}
 export const ExpenseContext = React.createContext<ExpenseContextType | undefined>(undefined);
 
 export default function ExpenseProvider({
@@ -35,8 +45,31 @@ export default function ExpenseProvider({
   const getExpenseList = () => expenses;
 
   const getExpenseListByDate = (date: string) => expenses[date] as ExpenseCategory;
-
-  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList, getExpenseListByDate };
+  const getAnalyticsData = () => {
+    const data: AnalyticsDataType = {};
+    let dayAmount = 0;
+    let mostSpentOn = 0;
+    let mostSpentCategory = '';
+    Object.keys(expenses).map(date => {
+      Object.keys(expenses[date]).map(category => {
+        dayAmount += expenses[date][category].amount;
+        if(expenses[date][category].amount > mostSpentOn) {
+          mostSpentOn = expenses[date][category].amount;
+          mostSpentCategory = category;
+        }
+        data[date] = {
+          dayAmount: dayAmount, 
+          mostSpentOn: mostSpentOn, 
+          mostSpentCategory: mostSpentCategory 
+        } 
+      }) 
+      dayAmount = 0;
+      mostSpentOn = 0;
+      mostSpentCategory = '';
+    })
+    return data;
+  }
+  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList, getExpenseListByDate, getAnalyticsData };
 
   React.useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses))
