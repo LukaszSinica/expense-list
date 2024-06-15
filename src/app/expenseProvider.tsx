@@ -17,7 +17,7 @@ interface ExpenseContextType {
   clearALLExpense: () => void;
   getExpenseList: () => ExpenseDate;
   getExpenseListByDate: (item: any) => ExpenseCategory;
-  getAnalyticsData: () => AnalyticsDataType;
+  getHistoryData: () => HistoryDataType;
 }
 
 interface DailyData {
@@ -26,7 +26,7 @@ interface DailyData {
   mostSpentCategory: string;
 }
 
-export interface AnalyticsDataType {
+export interface HistoryDataType {
   [date: string]: DailyData;
 }
 export const ExpenseContext = React.createContext<ExpenseContextType | undefined>(undefined);
@@ -45,8 +45,8 @@ export default function ExpenseProvider({
   const getExpenseList = () => expenses;
 
   const getExpenseListByDate = (date: string) => expenses[date] as ExpenseCategory;
-  const getAnalyticsData = () => {
-    const data: AnalyticsDataType = {};
+  const getHistoryData = () => {
+    const data: HistoryDataType = {};
     let dayAmount = 0;
     let mostSpentOn = 0;
     let mostSpentCategory = '';
@@ -69,16 +69,16 @@ export default function ExpenseProvider({
     })
     return data;
   }
-  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList, getExpenseListByDate, getAnalyticsData };
+  const value = { expenses, addToExpense, removeFromExpense, removeExpense, clearALLExpense, getExpenseList, getExpenseListByDate, getHistoryData };
 
   React.useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses))
   }, [expenses])
 
   return (
-    <ExpenseContext.Provider value={value}>
-      {children}
-    </ExpenseContext.Provider>
+      <ExpenseContext.Provider value={value}>
+        {children}
+      </ExpenseContext.Provider>
   )
 }
 

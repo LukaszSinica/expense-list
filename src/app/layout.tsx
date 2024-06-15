@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import ExpenseProvider from "./expenseProvider";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,9 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={"md:flex md:items-center md:flex-col sm:flex-none"}>
-        <ExpenseProvider>{children}</ExpenseProvider>
+        <ThemeProvider attribute="class">
+          <ExpenseProvider>{children}</ExpenseProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
