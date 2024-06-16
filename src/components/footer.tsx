@@ -8,7 +8,7 @@ import { faClipboard } from '@fortawesome/free-solid-svg-icons'
 
 export default function Footer({backButton = false}) {
   return (
-    <footer className="flex justify-between p-8 h-12 shadow-gray shadow-md items-center">
+    <footer className="flex justify-between p-8 h-12 shadow-gray shadow-md items-center border-t-2">
         <Link href="/history">
           <FontAwesomeIcon icon={faBoxArchive} className='w-5 h-5'/>
         </Link>
