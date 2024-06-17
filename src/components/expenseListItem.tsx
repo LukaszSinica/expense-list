@@ -1,10 +1,16 @@
 "use client";
-import { ExpenseCategory } from '@/app/lib/expesneListTypes';
+import { ExpenseCategory } from '@/lib/expesneListTypes';
 import React from 'react';
 import ExpenseListItemDetails from './expenseListItemDetails';
 import { useExpense } from '@/app/expenseProvider';
 
-export default function ExpenseListItem({expenseListData, category, date}: {expenseListData: ExpenseCategory, category: string, date: string}) {
+interface ExpenseListItemInterface {
+    expenseListData: ExpenseCategory,
+    category: string,
+    date: string
+}
+
+export default function ExpenseListItem({expenseListData, category, date}: ExpenseListItemInterface) {
   const [showDetails, setShowDetails] = React.useState(false);
   const { removeExpense } = useExpense();
   

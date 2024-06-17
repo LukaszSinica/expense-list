@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext } from 'react'
 import { expenseReducer, initializer } from './expenseReducer'
-import { ExpenseCategory, ExpenseDate } from './lib/expesneListTypes';
+import { ExpenseCategory, ExpenseDate } from '../lib/expesneListTypes';
 
 interface ExpenseState {
   date: string;

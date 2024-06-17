@@ -2,6 +2,7 @@
 import { useExpense } from '@/app/expenseProvider';
 import { getTodayDate } from '@/helper/getTodayDate';
 import React, { FormEvent } from 'react'
+import TextInput from './ui/textInput';
 
 
 export default function AddExpense() {
@@ -44,32 +45,8 @@ export default function AddExpense() {
                 required
                 />
         </div>
-          <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="type">
-            Type
-          </label>
-          <input 
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white leading-tight focus:outline-none focus:shadow-outline" 
-            id="type" 
-            name="type" 
-            type="text" 
-            placeholder="type"
-            required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">
-              Amount
-            </label>
-            <input 
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white leading-tight focus:outline-none focus:shadow-outline" 
-              id="amount" 
-              name='amount' 
-              type="number" 
-              placeholder="10"
-              required
-              />
-          </div>
+          <TextInput label={'Type'} name={'type'} type={'text'} placeholder='type'/>
+          <TextInput label={'Amount'} name={'amount'} type={'number'} placeholder='10'/>
           <button className="bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline shadow-md dark:bg-slate-600 dark:text-white dark:hover:bg-gray-700" type="submit">
             Add Expense
           </button>

@@ -1,9 +1,15 @@
 import { useExpense } from '@/app/expenseProvider';
-import { ExpenseDetails } from '@/app/lib/expesneListTypes'
+import { ExpenseDetails } from '@/lib/expesneListTypes'
 import React from 'react'
 
-//TODO: ADD INTERFACE/TYPE FOR LONG PARAMETERS
-export default function ExpenseListItemDetails({expenseListData, expense, category, date}: {expenseListData: ExpenseDetails, expense: string, category: string, date: string}) {
+interface ExpenseListItemDetailsInterface {
+  expenseListData: ExpenseDetails,
+  expense: string,
+  category: string,
+  date: string
+}
+
+export default function ExpenseListItemDetails({expenseListData, expense, category, date}: ExpenseListItemDetailsInterface) {
   const { removeFromExpense } = useExpense();
   const handleSubmit = () => {
     removeFromExpense({expense: expense, category: category, date: date, amount: expenseListData.expenseItems[expense].amount})

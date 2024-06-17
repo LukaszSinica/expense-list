@@ -5,9 +5,7 @@ import dynamic from 'next/dynamic'
 
 const ThemeSwitcher = dynamic(() => import('../components/themeToggler'))
 
-
 export default function Header() {
-  
   return (
     <header className="flex justify-between p-8 h-12 shadow-gray shadow-md items-center">
       <ThemeSwitcher/>

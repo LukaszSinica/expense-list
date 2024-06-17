@@ -1,4 +1,4 @@
-import { changelogData } from '@/app/lib/changelogs'
+import { changelogData } from '@/lib/changelogs'
 import React from 'react'
 
 export default function Changelog() {

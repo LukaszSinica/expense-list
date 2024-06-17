@@ -1,4 +1,4 @@
-import { ExpenseDate } from "./lib/expesneListTypes";
+import { ExpenseDate } from "../lib/expesneListTypes";
 
 const initialState: ExpenseDate[] = [];
 
@@ -6,7 +6,7 @@ export const initializer = (initialValue = initialState) => {
     if (typeof window !== "undefined") {
         try {
             const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
-            return expenses || initialValue; // Zwracaj expenses jeśli są, w przeciwnym razie initialValue
+            return expenses || initialValue;
         } catch (error) {
             console.error("Failed to initialize state from localStorage", error);
             return initialValue;

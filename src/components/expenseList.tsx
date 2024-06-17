@@ -1,6 +1,6 @@
 "use client"
 import { useExpense } from '@/app/expenseProvider';
-import { ExpenseCategory, ExpenseDate } from '@/app/lib/expesneListTypes';
+import { ExpenseCategory } from '@/lib/expesneListTypes';
 import React from 'react'
 import ExpenseListItem from './expenseListItem';
 import { getTodayDate } from '@/helper/getTodayDate';
