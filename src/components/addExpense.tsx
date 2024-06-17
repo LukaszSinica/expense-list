@@ -27,7 +27,7 @@ export default function AddExpense() {
   return (
     <div className="flex-grow shadow-gray shadow-md justify-center p-4">
       <form onSubmit={onSubmit}>
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date">
+        <label className="block text-gray-700 text-sm font-bold mb-2 dark:text-white" htmlFor="date">
             Date
         </label>
         <div className="relative max-w-full mb-4 w-full">

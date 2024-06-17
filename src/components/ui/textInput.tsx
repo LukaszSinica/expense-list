@@ -17,7 +17,7 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>, TextInpu
 export default function TextInput({label, name, type, ...props}: TextInputProps) {
   return (
     <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={name}>
+        <label className="block text-gray-700 text-sm font-bold mb-2 dark:text-white" htmlFor={name}>
             {label}
         </label>
         <input 
