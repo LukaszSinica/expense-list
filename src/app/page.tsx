@@ -1,5 +1,5 @@
 import Footer from "@/components/footer";
-import ExpenseList from "@/components/expenseList";
+import ExpenseList from "@/components/expenselist/expenseList";
 
 export default function Home() {
 

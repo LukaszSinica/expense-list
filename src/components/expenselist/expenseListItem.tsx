@@ -19,7 +19,7 @@ export default function ExpenseListItem({expenseListData, category, date}: Expen
   }
   return (
     <React.Fragment>
-        <div id={category} className="flex justify-between shadow-gray shadow-md px-12 py-4 hover:bg-gray-200 dark:hover:bg-gray-700 w-full" onClick={() => setShowDetails(!showDetails)}>
+        <div id={category} className="flex justify-between shadow-gray shadow-md px-12 py-4 w-full" onClick={() => setShowDetails(!showDetails)}>
             <div className="flex grow-1">
                 <div>
                     <div className="font-medium">

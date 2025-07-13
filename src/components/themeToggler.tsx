@@ -25,7 +25,7 @@ export default function ThemeToggler() {
 	}
 
     return (
-        <button onClick={toggleTheme} className="theme-toggler" aria-label={label} title={label}>
+        <button onClick={() => toggleTheme()} className="theme-toggler" aria-label={label} title={label}>
             { 
                 resolvedTheme == 'light' ? (
                     <FontAwesomeIcon icon={faMoon} className='w-5 h-5' />

@@ -2,9 +2,10 @@ import Link from 'next/link'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faBoxArchive } from '@fortawesome/free-solid-svg-icons'
 import { faClipboard } from '@fortawesome/free-solid-svg-icons'
+import AddExpenseDrawer from './addexpense/addExpenseDrawer'
+
 
 export default function Footer({backButton = false}) {
   return (
@@ -12,9 +13,7 @@ export default function Footer({backButton = false}) {
         <Link href="/history">
           <FontAwesomeIcon icon={faBoxArchive} className='w-5 h-5'/>
         </Link>
-        <Link href="/addexpense">
-          <FontAwesomeIcon icon={faPlus} className='w-5 h-5'/>
-        </Link>
+        <AddExpenseDrawer/>
         {backButton ? 
           <Link href="/">
             <FontAwesomeIcon icon={faArrowLeft} className='w-5 h-5'/>

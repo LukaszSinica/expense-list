@@ -15,7 +15,7 @@ export default function ExpenseListItemDetails({expenseListData, expense, catego
     removeFromExpense({expense: expense, category: category, date: date, amount: expenseListData.expenseItems[expense].amount})
   };
   return (
-    <div key={expense} className={"flex justify-between shadow-gray shadow-md px-12 py-4 hover:bg-gray-200 w-full dark:hover:bg-gray-700"}>
+    <div key={expense} className={"flex justify-between shadow-gray shadow-md px-12 py-4 w-full"}>
         <div className="flex grow-1">
             <div>
                 <div className="font-medium">
